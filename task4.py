@@ -7,4 +7,21 @@ G(n) = G(n - 3) + 2, если n > 6
 
 Формат вывода: программа должна печатать только одно число - ответ на задачу.
 """
-print(152076)
+
+import sys
+sys.setrecursionlimit(100000)
+a = ['*'] * 200000
+
+def G(n):
+    if a[n] != '*':
+        return a[n]
+    if n <= 6:
+        a[n] = 5 ** n
+        return a[n]
+    a[n] = G(n-3) + 2
+    return a[n]
+
+def F (n):
+    return G(n - 50000) + G(n + 50000)
+print(F(100000))
+

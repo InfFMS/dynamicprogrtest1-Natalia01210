@@ -7,4 +7,19 @@ G(n) = G(n - 2) + 1, если n >= 10.
 
 Формат вывода: программа должна печатать только одно число - ответ на задачу.
 """
-print(228)
+import sys
+sys.setrecursionlimit(10000)
+a = ['*'] * 16000
+
+def G(n):
+    if a[n] != '*':
+        return a[n]
+    if n < 10:
+        a[n] = 2 * n
+        return a[n]
+    a[n] = G(n-2) + 1
+    return a[n]
+
+def F (n):
+    return 2 * (G(n-3) + 8)
+print(F(15548))
